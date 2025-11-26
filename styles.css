@@ -1,0 +1,102 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  /* colors */
+  --white: rgba(196, 196, 196, 1);
+  --red: rgba(150, 3, 26, 1);
+  --black: rgba(30, 33, 43, 1);
+  /* fonts */
+  --important: "Major Mono Display", monospace;
+  --main-font: "Manrope", sans-serif;
+  --sub-font: "Inter", sans-serif;
+  /* font-size */
+  --font-xs: 0.625rem;
+  --font-s: 0.75rem;
+  --font-m: 1rem;
+  --font-l: ;
+}
+
+body {
+  background: var(--black);
+  padding: 2rem 1.375rem;
+  font-family: var(--main-font);
+  color: var(--black);
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-s);
+}
+
+.nav-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.home {
+  font-family: var(--important);
+}
+
+button {
+  background-color: var(--white);
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+  color: var(--red);
+}
+
+.symbol {
+  font-family: "Inter", sans-serif;
+  color: var(--red);
+  font-size: 32px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.card {
+  height: 100vh;
+  background: rgba(196, 196, 196, 1);
+  padding: 1.75rem 1.375rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+h1 {
+  color: var(--black);
+
+  font-family: "Major Mono Display", monospace;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 12px;
+  text-align: center;
+}
+
+h2 {
+  color: var(--black);
+
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 9px;
+  text-align: center;
+}
+
+footer {
+  font-size: small;
+  color: var(--black);
+  text-align: center;
+}
