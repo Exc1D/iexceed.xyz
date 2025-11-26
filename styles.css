@@ -14,10 +14,11 @@
   --main-font: "Manrope", sans-serif;
   --sub-font: "Inter", sans-serif;
   /* font-size */
-  --font-xs: 0.625rem;
-  --font-s: 0.75rem;
-  --font-m: 1rem;
-  --font-l: ;
+  --font-xs: clamp(0.5208rem, 0.4735rem + 0.1894vw, 0.625rem);
+  --font-s: clamp(0.625rem, 0.5682rem + 0.2273vw, 0.75rem);
+  --font-m: clamp(0.8333rem, 0.7576rem + 0.303vw, 1rem);
+  --font-l: clamp(2.8125rem, 2.5568rem + 1.0227vw, 3.375rem);
+  --font-xl: clamp(3.75rem, 3.4091rem + 1.3636vw, 4.5rem);
 }
 
 body {
@@ -32,7 +33,7 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  font-size: var(--font-s);
+  font-size: var(--font-s, 00.75rem);
 }
 
 .nav-btn {
@@ -44,10 +45,12 @@ nav {
 }
 
 .home {
+  font-weight: 600;
   font-family: var(--important);
 }
 
 button {
+  padding: 0.5rem 1rem;
   background-color: var(--white);
   border: none;
 }
@@ -60,44 +63,40 @@ button:hover {
 .symbol {
   font-family: "Inter", sans-serif;
   color: var(--red);
-  font-size: 32px;
+  font-size: var(--font-xl, 2rem);
   font-weight: 900;
   text-align: center;
 }
 
 .card {
-  height: 100vh;
+  min-height: 100vh;
   background: rgba(196, 196, 196, 1);
   padding: 1.75rem 1.375rem;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 h1 {
   color: var(--black);
 
   font-family: "Major Mono Display", monospace;
-  font-size: 32px;
+  font-size: var(--font-xl, 2rem);
   font-weight: 400;
-  line-height: 32px;
-  letter-spacing: 12px;
+  line-height: 2rem;
+  letter-spacing: 0.75rem;
   text-align: center;
 }
 
 h2 {
   color: var(--black);
 
-  font-size: 20px;
+  font-size: var(--font-l, 1.25rem);
   font-weight: 400;
-  line-height: 32px;
-  letter-spacing: 6px;
+  line-height: 2rem;
+  letter-spacing: 0.375rem;
   text-align: center;
 }
 
 footer {
-  font-size: small;
-  color: var(--black);
+  font-size: var(--font-s);
+  color: var(--white);
   text-align: center;
 }
