@@ -17,8 +17,8 @@
   --font-xs: clamp(0.5208rem, 0.4735rem + 0.1894vw, 0.625rem);
   --font-s: clamp(0.625rem, 0.5682rem + 0.2273vw, 0.75rem);
   --font-m: clamp(0.8333rem, 0.7576rem + 0.303vw, 1rem);
-  --font-l: clamp(2.8125rem, 2.5568rem + 1.0227vw, 3.375rem);
-  --font-xl: clamp(3.75rem, 3.4091rem + 1.3636vw, 4.5rem);
+  --font-l: clamp(1.25rem, 1.25rem + 1.0227vw, 3.375rem);
+  --font-xl: clamp(2rem, 2rem + 1.3636vw, 4.5rem);
 }
 
 body {
