@@ -69,6 +69,7 @@ a:focus {
 }
 
 .card {
+  min-height: 100vh;
   min-height: 100dvh;
   background: var(--white);
   padding: 1.75rem 1.375rem;
@@ -131,6 +132,28 @@ footer {
 .post-date {
   font-size: var(--font-s);
   color: var(--red);
+}
+
+/* Manage page styles */
+#manage-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.manage-title {
+  font-size: var(--font-m);
+  margin: 0;
+}
+.copy-command {
+  margin-top: 0.5rem;
+  background: var(--white);
+  color: var(--black);
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+}
+.copy-command:focus {
+  outline: 2px solid var(--red);
 }
 
 /* post page return button */

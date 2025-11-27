@@ -40,20 +40,10 @@ try {
     process.exit(1);
   }
   fs.writeFileSync(filePath, frontmatter, "utf8");
-  // update index.json
-  const indexPath = path.join(postsDir, "index.json");
-  let index = [];
-  if (fs.existsSync(indexPath)) {
-    index = JSON.parse(fs.readFileSync(indexPath, "utf8")) || [];
-  }
-  index.unshift({
-    slug,
-    title,
-    date: `${yyyy}-${mm}-${dd}`,
-    description: `A short description for ${title}`,
-    path: filename,
-  });
-  fs.writeFileSync(indexPath, JSON.stringify(index, null, 2), "utf8");
+  // Rebuild index.json from frontmatter to avoid inconsistencies
+  const { spawnSync } = require("child_process");
+  const syncScript = path.join(__dirname, "sync-index.js");
+  spawnSync("node", [syncScript], { stdio: "inherit" });
   console.log("Created new post at", filePath);
   if (openOpt) {
     const editor = process.env.EDITOR || "vi";

@@ -47,6 +47,8 @@ const files = [
   "styles.css",
   "script.js",
   "post.js",
+  "manage.html",
+  "manage.js",
   "README.md",
   "package.json",
   ".gitignore",
