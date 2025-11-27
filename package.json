@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "newpost": "node scripts/make-post.js",
-    "preview": "npx serve . -p 8000"
+    "preview": "npx serve . -p 8000",
+    "build": "node scripts/build.js",
+    "deploy": "npm run build && npx wrangler deploy"
   },
   "engines": {
     "node": ">=14"

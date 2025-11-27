@@ -13,7 +13,9 @@ npm run newpost -- "My New Post Title"
 2. Preview locally
 
 ```
-npx serve . -p 8000
+# build and preview locally
+npm run build
+npx serve dist -p 8000
 # open http://localhost:8000 (or use `npm run preview`)
 ```
 
