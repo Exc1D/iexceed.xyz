@@ -11,7 +11,7 @@
   --black: rgba(30, 33, 43, 1);
   /* fonts */
   --important: "Major Mono Display", monospace;
-  --main-font: "Manrope", sans-serif;
+  --main-font: monospace, sans-serif;
   --sub-font: "Inter", sans-serif;
   /* font-size */
   --font-xs: clamp(0.5208rem, 0.4735rem + 0.1894vw, 0.625rem);
@@ -33,7 +33,7 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  font-size: var(--font-s, 00.75rem);
+  font-size: var(--font-s, 0.75rem);
 }
 
 .nav-btn {
@@ -49,28 +49,29 @@ nav {
   font-family: var(--important);
 }
 
-button {
+a {
   padding: 0.5rem 1rem;
   background-color: var(--white);
+  color: var(--black);
   border: none;
+  border-radius: 1rem;
+  outline: none;
+  transition: box-shadow 0.1s, outline 0.1s;
 }
 
-button:hover {
+a:hover,
+a:focus {
+  outline: 2px solid var(--red);
+  outline-offset: 0.01rem;
+  box-shadow: 0 0 3px var(--red);
   cursor: pointer;
   color: var(--red);
-}
-
-.symbol {
-  font-family: "Inter", sans-serif;
-  color: var(--red);
-  font-size: var(--font-xl, 2rem);
-  font-weight: 900;
-  text-align: center;
+  border-radius: 1rem;
 }
 
 .card {
   min-height: 100vh;
-  background: rgba(196, 196, 196, 1);
+  background: var(--white);
   padding: 1.75rem 1.375rem;
 }
 
@@ -84,7 +85,9 @@ h1 {
   letter-spacing: 0.75rem;
   text-align: center;
 }
-
+.red {
+  color: var(--red);
+}
 h2 {
   color: var(--black);
 
@@ -99,4 +102,34 @@ footer {
   font-size: var(--font-s);
   color: var(--white);
   text-align: center;
+}
+
+/* Posts list */
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.post-card {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: rgba(250, 250, 250, 0.95);
+  color: var(--black);
+}
+.post-card h3 {
+  margin: 0 0 0.25rem 0;
+}
+.post-card p {
+  margin: 0.25rem 0 0;
+}
+
+/* Single post view */
+.post-article {
+  max-width: 48rem;
+  margin: 1.5rem auto 3rem;
+}
+.post-date {
+  font-size: var(--font-s);
+  color: var(--red);
 }

@@ -1,0 +1,12 @@
+{
+  "name": "exceed-xyz",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "newpost": "node scripts/make-post.js",
+    "preview": "npx serve . -p 8000"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "2025-11-27-my-cli-post",
+    "title": "My CLI Post",
+    "date": "2025-11-27",
+    "description": "A short description for My CLI Post",
+    "path": "2025-11-27-my-cli-post.md"
+  },
+  {
+    "slug": "2025-11-27-test-post-from-ai",
+    "title": "Test Post from AI",
+    "date": "2025-11-27",
+    "description": "A short description for Test Post from AI",
+    "path": "2025-11-27-test-post-from-ai.md"
+  },
+  {
+    "slug": "2025-11-27-first-post",
+    "title": "First Post",
+    "date": "2025-11-27",
+    "description": "An example first post that is rendered client-side from Markdown.",
+    "path": "2025-11-27-first-post.md"
+  }
+]

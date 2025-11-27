@@ -21,22 +21,26 @@
     />
     <!-- links -->
     <link rel="stylesheet" href="styles.css" />
+    <!-- CDN markdown parser (for client-side rendering of posts) -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js" defer></script>
     <title>Blog | Exceed</title>
   </head>
   <body>
     <main class="card">
       <nav>
-        <button class="home">eXceed</button>
+        <a class="home" aria-label="Homepage"><span>eXceed</span></a>
         <div class="nav-btn">
-          <button>Blog</button>
-          <button>About</button>
+          <a href="/blog" class="nav-link">Blog</a>
+          <a href="/about" class="nav-link">About</a>
         </div>
       </nav>
       <header>
-        <p class="symbol">&lt;/&gt;</p>
-        <h1>EXCEED</h1>
+        <h1>E<span class="red">X</span>CEED</h1>
         <h2>"Fun made beautifully"</h2>
       </header>
+      <!-- Post list (rendered by script.js) -->
+      <section id="posts" class="post-list" aria-live="polite"></section>
     </main>
     <footer>
       <p>Powered by Cloudflare - made with 🖤</p>
