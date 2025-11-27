@@ -26,52 +26,19 @@ async function loadPost() {
     const mdResp = await fetch(`posts/${postMeta.path}?t=${Date.now()}`);
     if (!mdResp.ok) throw new Error("Failed to fetch post markdown");
     const raw = await mdResp.text();
-    // parse YAML frontmatter (if any) and extract title/description
-    let mdTitle = null;
-    let mdDescription = null;
-    const fmMatch = raw.match(/^---\s*([\s\S]*?)\s*---/);
-    if (fmMatch) {
-      const fm = fmMatch[1];
-      const titleMatch = fm.match(/^\s*title:\s*["']?(.+?)["']?\s*$/m);
-      const descMatch = fm.match(/^\s*description:\s*["']?(.+?)["']?\s*$/m);
-      if (titleMatch) mdTitle = titleMatch[1].trim();
-      if (descMatch) mdDescription = descMatch[1].trim();
-    }
     // attempt to strip YAML frontmatter
-    let body = raw.replace(/^---[\s\S]*?---/, "").trim();
-    // detect leading H1 inside markdown (used if frontmatter missing)
-    let h1Title = null;
-    const h1Match = body.match(/^\s*#\s+(.+)(?:\r?\n|\r)/);
-    if (h1Match) {
-      h1Title = h1Match[1].trim();
-    }
-    // remove leading H1 from markdown to avoid duplicate titles in the rendered page
-    // decide on final title preference: if meta from posts/index.json is missing or a generic 'Untitled Post', prefer mdTitle or h1Title
-    // prefer frontmatter (mdTitle) if available, otherwise use index.json title, then H1, then fallback
-    const finalTitle =
-      mdTitle && mdTitle !== "Untitled Post"
-        ? mdTitle
-        : postMeta && postMeta.title && postMeta.title !== "Untitled Post"
-        ? postMeta.title
-        : h1Title || "Untitled Post";
-    const html = marked.parse(
-      body.replace(/^\s*#\s+.*(?:\r?\n|\r)/, "").trim()
-    );
-    document.getElementById("post-title").textContent = finalTitle;
+    const body = raw.replace(/^---[\s\S]*?---/, "").trim();
+    const html = marked.parse(body);
+    document.getElementById("post-title").textContent = postMeta.title;
     document.getElementById("post-date").textContent = new Date(
       postMeta.date
     ).toLocaleDateString();
     document.getElementById("post-content").innerHTML = html;
-    document.title = finalTitle + " | Exceed";
+    document.title = postMeta.title + " | Exceed";
     // set meta description if present in meta
     const metas = document.querySelectorAll('meta[name="description"]');
-    // prefer the description in index.json, but fall back to frontmatter description
-    const metaDescription =
-      postMeta && postMeta.description
-        ? postMeta.description
-        : mdDescription || "";
-    if (metaDescription && metas.length > 0) {
-      metas[0].setAttribute("content", metaDescription);
+    if (postMeta.description && metas.length > 0) {
+      metas[0].setAttribute("content", postMeta.description);
     }
   } catch (err) {
     console.error(err);
