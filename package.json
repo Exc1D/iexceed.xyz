@@ -5,8 +5,9 @@
   "scripts": {
     "newpost": "node scripts/make-post.js",
     "preview": "npx serve . -p 8000",
-    "build": "node scripts/build.js",
-    "deploy": "npm run build"
+    "sync-index": "node scripts/sync-index.js",
+    "build": "node scripts/sync-index.js && node scripts/build.js",
+    "deploy": "npm run build && npx wrangler deploy --assets ./dist"
   },
   "engines": {
     "node": ">=14"
