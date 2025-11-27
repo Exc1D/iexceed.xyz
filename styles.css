@@ -49,21 +49,20 @@ nav {
   font-family: var(--important);
 }
 
-a {
+a,
+#refresh-posts {
   padding: 0.5rem 1rem;
   background-color: var(--white);
   color: var(--black);
   border: none;
   border-radius: 1rem;
-  outline: none;
-  transition: box-shadow 0.1s, outline 0.1s;
 }
 
+#refresh-posts,
 a:hover,
+#refresh-posts:hover,
 a:focus {
-  outline: 2px solid var(--red);
-  outline-offset: 0.01rem;
-  box-shadow: 0 0 3px var(--red);
+  background: #efefef;
   cursor: pointer;
   color: var(--red);
   border-radius: 1rem;
@@ -133,3 +132,37 @@ footer {
   font-size: var(--font-s);
   color: var(--red);
 }
+
+/* post page return button */
+.post-nav {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 0 1rem 0;
+}
+.back-btn {
+  color: var(--black);
+  background: transparent;
+  padding: 0 0.5rem;
+  text-decoration: none;
+  border: none;
+  font-weight: 600;
+}
+.back-btn:hover {
+  color: var(--red);
+  cursor: pointer;
+}
+
+/* refresh posts button */
+/* #refresh-posts {
+  background: var(--white);
+  color: var(--black);
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  margin-left: auto;
+  border: none;
+  font-weight: 600;
+}
+#refresh-posts:hover {
+  background: #efefef;
+  cursor: pointer;
+} */

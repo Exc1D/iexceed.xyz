@@ -1,5 +1,12 @@
 [
   {
+    "slug": "2025-11-27-second-test-post",
+    "title": "Second Test Post",
+    "date": "2025-11-27",
+    "description": "A short description for Second Test Post",
+    "path": "2025-11-27-second-test-post.md"
+  },
+  {
     "slug": "2025-11-27-my-cli-post",
     "title": "My CLI Post",
     "date": "2025-11-27",

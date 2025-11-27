@@ -15,13 +15,15 @@ async function loadPost() {
   if (!slug) return;
   try {
     // load index to find the path to the post
-    const indexResp = await fetch("posts/index.json");
+    const indexResp = await fetch(`posts/index.json?t=${Date.now()}`, {
+      cache: "no-store",
+    });
     if (!indexResp.ok) throw new Error("Failed to load post index");
     const posts = await indexResp.json();
     const postMeta = posts.find((p) => p.slug === slug);
     if (!postMeta) throw new Error("Post not found");
     // load the markdown
-    const mdResp = await fetch(`posts/${postMeta.path}`);
+    const mdResp = await fetch(`posts/${postMeta.path}?t=${Date.now()}`);
     if (!mdResp.ok) throw new Error("Failed to fetch post markdown");
     const raw = await mdResp.text();
     // attempt to strip YAML frontmatter
@@ -40,6 +42,14 @@ async function loadPost() {
     }
   } catch (err) {
     console.error(err);
+    // Gracefully show not-found message and keep the Back button
+    const titleEl = document.getElementById("post-title");
+    const contentEl = document.getElementById("post-content");
+    if (titleEl) titleEl.textContent = "Post not found";
+    if (contentEl)
+      contentEl.textContent =
+        "This post may have been removed or is temporarily unavailable.";
+    document.title = "Post not found | Exceed";
   }
 }
 

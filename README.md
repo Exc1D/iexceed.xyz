@@ -22,5 +22,5 @@ How it works:
 - `posts/*.md` — markdown files with frontmatter (YAML) and content.
 - `posts/index.json` — a JSON file listing posts (slug, title, date, etc) used by the index to render links.
 - `post.html` — page that loads a markdown file and renders it with `marked.js`.
-- `index.html` — loads `posts/index.json` and renders a list with links to `post.html?slug=...`.
+- `blog.html` — loads `posts/index.json` and renders a list with links to `post.html?slug=...`. It includes a "Refresh posts" button and auto-polls every 60s to refresh the list.
 - `scripts/make-post.js` — a simple helper to scaffold a new post and update `posts/index.json`.
