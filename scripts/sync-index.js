@@ -3,14 +3,14 @@
  * scripts/sync-index.js
  * Regenerates posts/index.json by scanning posts/*.md and extracting frontmatter metadata
  */
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-const postsDir = path.join(__dirname, '..', 'posts');
-const indexPath = path.join(postsDir, 'index.json');
+const postsDir = path.join(__dirname, "..", "posts");
+const indexPath = path.join(postsDir, "index.json");
 
 function readPostMetadata(filePath) {
-  const raw = fs.readFileSync(filePath, 'utf8');
+  const raw = fs.readFileSync(filePath, "utf8");
   // attempt to parse frontmatter
   let title = null;
   let date = null;
@@ -27,7 +27,7 @@ function readPostMetadata(filePath) {
   }
   // fallback: detect H1 title in body
   if (!title) {
-    const body = raw.replace(/^---[\s\S]*?---/, '').trim();
+    const body = raw.replace(/^---[\s\S]*?---/, "").trim();
     const h1Match = body.match(/^\s*#\s+(.+)(?:\r?\n|\r)/);
     if (h1Match) title = h1Match[1].trim();
   }
@@ -35,35 +35,35 @@ function readPostMetadata(filePath) {
 }
 
 function slugFromFile(filename) {
-  return filename.replace(/\.md$/, '');
+  return filename.replace(/\.md$/, "");
 }
 
 function buildIndex() {
   if (!fs.existsSync(postsDir)) {
-    console.warn('posts directory not found, skipping index generation');
+    console.warn("posts directory not found, skipping index generation");
     return;
   }
-  const files = fs.readdirSync(postsDir).filter(f => f.endsWith('.md'));
-  const posts = files.map(f => {
+  const files = fs.readdirSync(postsDir).filter((f) => f.endsWith(".md"));
+  const posts = files.map((f) => {
     const filePath = path.join(postsDir, f);
     const meta = readPostMetadata(filePath);
     const slug = slugFromFile(f);
-    const date = meta.date || slug.split('-').slice(0,3).join('-') || null;
+    const date = meta.date || slug.split("-").slice(0, 3).join("-") || null;
     return {
       slug,
-      title: meta.title || 'Untitled Post',
+      title: meta.title || "Untitled Post",
       date,
-      description: meta.description || '',
-      path: f
+      description: meta.description || "",
+      path: f,
     };
   });
   // sort by date desc if date available
-  posts.sort((a,b) => {
+  posts.sort((a, b) => {
     if (a.date && b.date) return new Date(b.date) - new Date(a.date);
     return 0;
   });
-  fs.writeFileSync(indexPath, JSON.stringify(posts, null, 2), 'utf8');
-  console.log('Wrote', indexPath);
+  fs.writeFileSync(indexPath, JSON.stringify(posts, null, 2), "utf8");
+  console.log("Wrote", indexPath);
 }
 
 buildIndex();
