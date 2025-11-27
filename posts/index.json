@@ -1,5 +1,19 @@
 [
   {
+    "slug": "2025-11-27-original-title",
+    "title": "Original Title",
+    "date": "2025-11-27",
+    "description": "A short description for Original Title",
+    "path": "2025-11-27-original-title.md"
+  },
+  {
+    "slug": "2025-11-27-rendered-title-test",
+    "title": "Rendered Title Test",
+    "date": "2025-11-27",
+    "description": "A short description for Rendered Title Test",
+    "path": "2025-11-27-rendered-title-test.md"
+  },
+  {
     "slug": "2025-11-27-untitled-post",
     "title": "Untitled Post",
     "date": "2025-11-27",

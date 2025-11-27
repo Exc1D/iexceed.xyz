@@ -49,12 +49,38 @@ async function loadPosts() {
     );
 
     const existingPosts = checks.filter(Boolean);
+    // For each existing post, fetch its markdown and prefer frontmatter title/desc if present
+    const postsWithMeta = await Promise.all(
+      existingPosts.map(async (p) => {
+        try {
+          const r = await fetch(`posts/${p.path}?t=${Date.now()}`, {
+            cache: "no-store",
+          });
+          if (r.ok) {
+            const raw = await r.text();
+            const fmMatch = raw.match(/^---\s*([\s\S]*?)\s*---/);
+            if (fmMatch) {
+              const fm = fmMatch[1];
+              const titleMatch = fm.match(/^\s*title:\s*["']?(.+?)["']?\s*$/m);
+              const descMatch = fm.match(
+                /^\s*description:\s*["']?(.+?)["']?\s*$/m
+              );
+              if (titleMatch) p.title = titleMatch[1].trim();
+              if (descMatch) p.description = descMatch[1].trim();
+            }
+          }
+        } catch (err) {
+          /* ignore and keep index.json metadata */
+        }
+        return p;
+      })
+    );
     if (existingPosts.length === 0) {
       container.textContent = "No posts found";
       return;
     }
 
-    existingPosts.forEach((p) => {
+    postsWithMeta.forEach((p) => {
       const card = document.createElement("article");
       card.className = "post-card";
       const title = document.createElement("h3");
