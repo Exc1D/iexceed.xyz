@@ -1,5 +1,5 @@
 ---
-title: "Kakayanin"
+title: "In the beningging"
 date: "2025-11-27"
 description: "Malayo na pero malayo pa"
 tags: []
