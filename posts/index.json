@@ -1,10 +1,17 @@
 [
   {
-    "slug": "2025-11-27-untitled-post",
+    "slug": "2025-11-28-untitled-post",
     "title": "Untitled Post",
-    "date": "2025-11-27",
+    "date": "2025-11-28",
     "description": "A short description for Untitled Post",
-    "path": "2025-11-27-untitled-post.md"
+    "path": "2025-11-28-untitled-post.md"
+  },
+  {
+    "slug": "In the beningging",
+    "title": "In the beningging",
+    "date": "2025-11-27",
+    "description": "Malayo na pero malayo pa",
+    "path": "In the beningging.md"
   },
   {
     "slug": "first-post",
