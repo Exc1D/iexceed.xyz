@@ -232,8 +232,8 @@ article p {
 
 .avatar {
   border-radius: 50%;
-  width: clamp(10rem, 9.5rem + 4vw, 15rem);
-  height: clamp(10rem, 9.5rem + 4vw, 15rem);
+  width: clamp(3.5rem, 9.5rem + 4vw, 15rem);
+  height: clamp(3.5rem, 9.5rem + 4vw, 15rem);
   object-fit: cover;
   margin: 2rem auto 2.5rem auto;
   display: block;
