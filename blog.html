@@ -13,24 +13,24 @@
 
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="utils.js" defer></script>
     <script src="script.js" defer></script>
     <title>Blog | Exceed</title>
   </head>
   <body>
     <main class="card">
       <nav>
-        <a class="home" aria-label="Homepage" href="index.html">eXceed</a>
+        <a class="home" aria-label="Homepage" href="index.html"
+          ><span class="logo">X</span> HOME</a
+        >
         <div class="nav-btn">
           <a href="blog.html" class="nav-link">Blog</a>
           <a href="/about" class="nav-link">About</a>
         </div>
       </nav>
       <header>
-        <h1>E<span class="red">X</span>CEED</h1>
+        <h1>EX<span class="logo">X</span>EED</h1>
         <h2>Posts</h2>
-        <button id="refresh-posts" aria-label="Refresh posts">
-          Refresh posts
-        </button>
       </header>
       <!-- Post list (rendered by script.js) -->
       <section id="posts" class="post-list" aria-live="polite"></section>

@@ -46,6 +46,7 @@ const files = [
   "post.html",
   "styles.css",
   "script.js",
+  "utils.js",
   "post.js",
   "manage.html",
   "manage.js",

@@ -7,12 +7,7 @@
 
 async function loadPosts() {
   try {
-    const cacheBust = Date.now();
-    const resp = await fetch(`posts/index.json?t=${cacheBust}`, {
-      cache: "no-store",
-    });
-    if (!resp.ok) throw new Error("Could not load posts");
-    const posts = await resp.json();
+    const posts = await window.utils.fetchJSON("posts/index.json");
     const container = document.getElementById("posts");
     if (!container) return;
     container.innerHTML = "";
@@ -21,10 +16,8 @@ async function loadPosts() {
       posts.map(async (p) => {
         try {
           // try a HEAD request first to minimize bandwidth
-          const r = await fetch(`posts/${p.path}?t=${cacheBust}`, {
-            method: "HEAD",
-            cache: "no-store",
-          });
+          const ok = await window.utils.exists(`posts/${p.path}`);
+          if (ok) return p;
           if (r.ok) return p;
           if (r.status === 405 || r.status === 501) {
             // HEAD not allowed - fallback GET
@@ -49,12 +42,30 @@ async function loadPosts() {
     );
 
     const existingPosts = checks.filter(Boolean);
+    // For posts with no title or 'Untitled Post', try to parse frontmatter from the markdown
+    const postsWithMeta = await Promise.all(
+      existingPosts.map(async (p) => {
+        if (!p.title || p.title === "Untitled Post") {
+          try {
+            const raw = await window.utils.fetchText(`posts/${p.path}`);
+            const parsed = window.utils.parseFrontmatter(raw);
+            if (parsed && parsed.meta && parsed.meta.title)
+              p.title = parsed.meta.title;
+            if (parsed && parsed.meta && parsed.meta.description)
+              p.description = parsed.meta.description;
+          } catch (e) {
+            // ignore
+          }
+        }
+        return p;
+      })
+    );
     if (existingPosts.length === 0) {
       container.textContent = "No posts found";
       return;
     }
 
-    existingPosts.forEach((p) => {
+    postsWithMeta.forEach((p) => {
       const card = document.createElement("article");
       card.className = "post-card";
       const title = document.createElement("h3");

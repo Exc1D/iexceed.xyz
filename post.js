@@ -15,21 +15,17 @@ async function loadPost() {
   if (!slug) return;
   try {
     // load index to find the path to the post
-    const indexResp = await fetch(`posts/index.json?t=${Date.now()}`, {
-      cache: "no-store",
-    });
-    if (!indexResp.ok) throw new Error("Failed to load post index");
-    const posts = await indexResp.json();
+    const posts = await window.utils.fetchJSON("posts/index.json");
     const postMeta = posts.find((p) => p.slug === slug);
     if (!postMeta) throw new Error("Post not found");
     // load the markdown
-    const mdResp = await fetch(`posts/${postMeta.path}?t=${Date.now()}`);
-    if (!mdResp.ok) throw new Error("Failed to fetch post markdown");
-    const raw = await mdResp.text();
-    // attempt to strip YAML frontmatter
-    const body = raw.replace(/^---[\s\S]*?---/, "").trim();
+    const raw = await window.utils.fetchText(`posts/${postMeta.path}`);
+    const parsed = window.utils.parseFrontmatter(raw);
+    const titleFromMd = parsed.meta.title || null;
+    const finalTitle = titleFromMd || postMeta.title || "Untitled Post";
+    const body = parsed.body.replace(/^\s*#\s+.*(?:\r?\n|\r)/, "").trim();
     const html = marked.parse(body);
-    document.getElementById("post-title").textContent = postMeta.title;
+    document.getElementById("post-title").textContent = finalTitle;
     document.getElementById("post-date").textContent = new Date(
       postMeta.date
     ).toLocaleDateString();
@@ -37,9 +33,10 @@ async function loadPost() {
     document.title = postMeta.title + " | Exceed";
     // set meta description if present in meta
     const metas = document.querySelectorAll('meta[name="description"]');
-    if (postMeta.description && metas.length > 0) {
-      metas[0].setAttribute("content", postMeta.description);
-    }
+    const metaDescription =
+      parsed.meta.description || postMeta.description || "";
+    if (metaDescription && metas.length > 0)
+      metas[0].setAttribute("content", metaDescription);
   } catch (err) {
     console.error(err);
     // Gracefully show not-found message and keep the Back button
