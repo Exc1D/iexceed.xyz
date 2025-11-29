@@ -6,8 +6,8 @@
 
 :root {
   /* colors */
-  --bg: #cccccc; /* page background */
-  --muted: #ffffff; /* muted gray */
+  --bg: #ffffff; /* page background */
+  --muted: #cccccc; /* muted gray */
   --red: #96031a; /* brand red */
   --text: #1e212b;
   /* fonts */
