@@ -15,11 +15,11 @@
     "Helvetica Neue", Arial;
   --mono-font: "Major Mono Display", monospace;
   /* font-size */
-  --font-xs: clamp(0.5208rem, 0.4735rem + 0.1894vw, 0.625rem);
-  --font-s: clamp(0.625rem, 0.5682rem + 0.2273vw, 0.75rem);
-  --font-m: clamp(0.8333rem, 0.7576rem + 0.303vw, 1rem);
-  --font-l: clamp(1.25rem, 1.25rem + 1.0227vw, 3.375rem);
-  --font-xl: clamp(2rem, 2rem + 1.3636vw, 4.5rem);
+  --font-xs: clamp(0.75rem, 0.5rem + 0.5vw, 1rem);
+  --font-s: clamp(0.875rem, 0.75rem + 0.5vw, 1.125rem);
+  --font-m: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
+  --font-l: clamp(1.5rem, 1rem + 2vw, 3rem);
+  --font-xl: clamp(2.5rem, 1.5rem + 4vw, 5rem);
 }
 
 body {
@@ -36,7 +36,7 @@ a .logo {
   gap: 1rem;
   justify-content: space-between;
   align-items: center;
-  font-size: var(--font-s, 0.75rem);
+  font-size: var(--font-s, 0.875rem);
 }
 
 .nav-btn {
@@ -101,16 +101,16 @@ h1 {
   color: var(--text);
   font-family: var(--main-font);
   font-size: var(--font-xl, 2rem);
-  font-weight: 750;
+  font-weight: 700;
   line-height: 1.1;
-  letter-spacing: 0.75rem;
+  letter-spacing: 0.5rem;
   text-align: center;
 }
 .logo {
   font-family: var(--mono-font);
   color: var(--red);
   font-weight: 600;
-  font-size: clamp(2rem, 2.5rem + 1.3636vw, 4.52rem);
+  font-size: clamp(2.85rem, 2.5rem + 4vw, 5.5rem);
 }
 h2 {
   color: var(--text);
