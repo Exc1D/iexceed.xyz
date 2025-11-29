@@ -7,7 +7,7 @@
 :root {
   /* colors */
   --bg: #ffffff; /* page background */
-  --muted: #c4c4c4; /* muted gray */
+  --muted: #cccccc; /* muted gray */
   --red: #96031a; /* brand red */
   --text: #1e212b;
   /* fonts */
@@ -30,7 +30,8 @@ body {
 }
 
 /* Navigation */
-nav {
+nav,
+a .logo {
   display: flex;
   gap: 1rem;
   justify-content: space-between;
@@ -44,18 +45,25 @@ nav {
   align-items: center;
 }
 
-.nav-link {
+#blog-btn {
+  background-color: var(--red);
+  color: var(--bg);
+}
+#blog-btn:hover {
+  background-color: var(--bg);
+  color: var(--red);
+}
+
+.nav-link,
+.back-btn,
+.home {
+  display: inline-block;
   padding: 0.35rem 0.65rem;
   border-radius: 0.55rem;
   background: transparent;
   border: 1px solid transparent;
   color: var(--text);
   transition: background-color 0.12s ease, color 0.12s ease;
-}
-.nav-link:hover {
-  background: rgba(0, 0, 0, 0.03);
-  color: var(--red);
-  border-color: rgba(0, 0, 0, 0.06);
 }
 
 .home {
@@ -75,6 +83,9 @@ a:hover,
 a:focus {
   cursor: pointer;
   color: var(--red);
+  background: rgba(0, 0, 0, 0.03);
+  color: var(--red);
+  border-color: rgba(0, 0, 0, 0.06);
 }
 
 .card {
@@ -90,7 +101,7 @@ h1 {
   color: var(--text);
   font-family: var(--main-font);
   font-size: var(--font-xl, 2rem);
-  font-weight: 900;
+  font-weight: 750;
   line-height: 1.1;
   letter-spacing: 0.75rem;
   text-align: center;
@@ -99,6 +110,7 @@ h1 {
   font-family: var(--mono-font);
   color: var(--red);
   font-weight: 600;
+  font-size: clamp(2rem, 2.5rem + 1.3636vw, 4.52rem);
 }
 h2 {
   color: var(--text);
@@ -124,11 +136,21 @@ footer {
 }
 
 .post-card {
+  display: block;
   padding: 1rem;
   border-radius: 0.5rem;
   background: var(--bg);
   border: 1px solid #efefef;
   color: var(--text);
+  text-decoration: none;
+  transition: transform 0.12s ease, border-color 0.12s ease,
+    box-shadow 0.12s ease;
+}
+.post-card:hover {
+  transform: scale(1.02);
+  border-color: var(--red);
+  box-shadow: 0 4px 8px rgba(150, 3, 26, 0.1);
+  cursor: pointer;
 }
 
 /* generic container for content */
@@ -147,10 +169,12 @@ article p {
 }
 .post-card h3 {
   margin: 0 0 0.25rem 0;
+  color: var(--text);
 }
 
 .post-card p {
   margin: 0.25rem 0 0;
+  color: var(--text);
 }
 
 /* Single post view */
@@ -194,16 +218,11 @@ article p {
   margin: 0 0 1rem 0;
 }
 .back-btn {
-  color: var(--text);
-  background: transparent;
-  padding: 0 0.5rem;
-  text-decoration: none;
-  border: none;
   font-weight: 600;
 }
-.back-btn:hover {
-  color: var(--red);
-  cursor: pointer;
+
+.about {
+  font-weight: 200;
 }
 
 /* responsive breakpoints */
