@@ -345,7 +345,6 @@ article p {
 }
 
 .post-article header {
-  margin-bottom: var(--space-l);
   padding-bottom: var(--space-m);
   border-bottom: 2px solid var(--border);
 }
@@ -364,7 +363,6 @@ article p {
 
 #post-content h2,
 #post-content h3 {
-  margin-top: var(--space-m);
   margin-bottom: var(--space-m);
   scroll-margin-top: var(--space-l);
 }
@@ -372,7 +370,7 @@ article p {
 #post-content h2 {
   font-size: var(--font-l);
   border-bottom: 2px solid var(--border);
-  padding-bottom: var(--space-m);
+  padding: var(--space-s) 0;
 }
 
 #post-content h3 {
