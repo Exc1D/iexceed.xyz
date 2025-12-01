@@ -10,6 +10,7 @@
   const THEME_ATTR = "data-theme";
 
   // Get user's preference
+  // sourcery skip: avoid-function-declarations-in-blocks
   function getThemePreference() {
     // Check localStorage first
     const stored = localStorage.getItem(STORAGE_KEY);
