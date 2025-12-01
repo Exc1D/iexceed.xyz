@@ -13,6 +13,9 @@
 
     <link rel="stylesheet" href="styles.css" />
     <meta name="description" content="" />
+    <script>
+      (function(){const t=localStorage.getItem('theme-preference')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="theme.js" defer></script>
     <script src="utils.js" defer></script>

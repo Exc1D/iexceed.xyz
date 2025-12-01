@@ -67,9 +67,9 @@
     setTimeout(() => announcement.remove(), 1000);
   }
 
-  // Initialize theme on page load (before content paints)
+  // Initialize theme immediately (before content paints)
   const initialTheme = getThemePreference();
-  document.documentElement.setAttribute(THEME_ATTR, initialTheme);
+  setTheme(initialTheme);
 
   // Wait for DOM to be ready
   document.addEventListener("DOMContentLoaded", function () {
