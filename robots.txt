@@ -1,0 +1,18 @@
+# robots.txt for Exceed Blog
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://iexceed.pages.dev/sitemap.xml
+
+# Crawl-delay (optional, helps prevent server overload)
+Crawl-delay: 1
+
+# Disallow admin/management pages if you add them
+Disallow: /manage.html
+Disallow: /admin/
+
+# Allow all CSS and JS for proper rendering
+Allow: /*.css$
+Allow: /*.js$

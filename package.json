@@ -6,7 +6,7 @@
     "newpost": "node scripts/make-post.js",
     "preview": "npx serve . -p 8000",
     "sync-index": "node scripts/sync-index.js",
-    "build": "node scripts/sync-index.js && node scripts/build.js",
+    "build": "node scripts/sync-index.js && node scripts/build.js && cp _headers dist/ && cp sitemap.xml dist/ && cp robots.txt dist/ && cp theme.js dist/",
     "deploy": "npm run build && npx wrangler deploy --assets ./dist"
   },
   "engines": {

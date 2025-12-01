@@ -1,47 +1,167 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- SEO -->
+
+    <!-- Primary Meta Tags -->
+    <title>Exceed - I can do all things through HIM</title>
+    <meta name="title" content="Exceed - I can do all things through HIM" />
     <meta
       name="description"
-      content="Exceed — A beautifully crafted personal dev portfolio and blog."
+      content="Personal developer blog by a former PMA cadet. Join me on my journey of creating beautiful apps and learning web development with faith and determination."
     />
-    <meta property="og:title" content="EXCEED" />
+    <meta
+      name="keywords"
+      content="web development, coding, personal blog, developer journey, faith, PMA cadet, HTML, CSS, JavaScript"
+    />
+    <meta name="author" content="Exceed" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Fun made beautifully." />
-    <!-- fonts -->
+    <meta property="og:url" content="https://iexceed.pages.dev/" />
+    <meta
+      property="og:title"
+      content="Exceed - I can do all things through HIM"
+    />
+    <meta
+      property="og:description"
+      content="Personal developer blog by a former PMA cadet creating beautiful apps."
+    />
+    <meta
+      property="og:image"
+      content="https://iexceed.pages.dev/assets/images/boss.webp"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://iexceed.pages.dev/" />
+    <meta
+      property="twitter:title"
+      content="Exceed - I can do all things through HIM"
+    />
+    <meta
+      property="twitter:description"
+      content="Personal developer blog by a former PMA cadet creating beautiful apps."
+    />
+    <meta
+      property="twitter:image"
+      content="https://iexceed.pages.dev/assets/images/boss.webp"
+    />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://iexceed.pages.dev/" />
+
+    <!-- Theme Color -->
+    <meta
+      name="theme-color"
+      content="#96031a"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#0d1117"
+      media="(prefers-color-scheme: dark)"
+    />
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta
+      http-equiv="Referrer-Policy"
+      content="strict-origin-when-cross-origin"
+    />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Major+Mono+Display&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
       rel="stylesheet"
     />
-    <!-- links -->
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css" />
-    <!-- scripts not required on landing (posts moved to blog.html) -->
-    <title>Exceed</title>
+
+    <!-- Scripts -->
+    <script src="theme.js" defer></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Exceed",
+        "description": "Personal developer blog by a former PMA cadet",
+        "url": "https://iexceed.pages.dev/",
+        "author": {
+          "@type": "Person",
+          "name": "Exceed",
+          "description": "Former PMA cadet turned developer"
+        },
+        "inLanguage": "en-US"
+      }
+    </script>
   </head>
   <body>
-    <main class="card">
-      <nav>
-        <a class="home" aria-label="Homepage" href="index.html"
-          ><span class="logo">X</span> HOME</a
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Theme toggle button -->
+    <button
+      class="theme-toggle"
+      aria-label="Toggle dark mode"
+      title="Toggle theme"
+    >
+      <svg
+        aria-hidden="true"
+        class="sun-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12C18 15.3137 15.3137 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16ZM11 1H13V4H11V1ZM11 20H13V23H11V20ZM3.51472 4.92893L4.92893 3.51472L7.05025 5.63604L5.63604 7.05025L3.51472 4.92893ZM16.9497 18.364L18.364 16.9497L20.4853 19.0711L19.0711 20.4853L16.9497 18.364ZM19.0711 3.51472L20.4853 4.92893L18.364 7.05025L16.9497 5.63604L19.0711 3.51472ZM5.63604 16.9497L7.05025 18.364L4.92893 20.4853L3.51472 19.0711L5.63604 16.9497ZM23 11V13H20V11H23ZM4 11V13H1V11H4Z"
+        />
+      </svg>
+      <svg
+        aria-hidden="true"
+        class="moon-icon"
+        style="display: none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M10 7C10 10.866 13.134 14 17 14C18.9584 14 20.729 13.1957 21.9995 11.8995C22 11.933 22 11.9665 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C12.0335 2 12.067 2 12.1005 2.00049C10.8043 3.27098 10 5.04157 10 7ZM4 12C4 16.4183 7.58172 20 12 20C15.0583 20 17.7158 18.2839 19.062 15.7621C18.3945 15.9187 17.7035 16 17 16C12.0294 16 8 11.9706 8 7C8 6.29648 8.08133 5.60547 8.2379 4.938C5.71611 6.28423 4 8.9417 4 12Z"
+        />
+      </svg>
+    </button>
+
+    <main id="main-content" class="card">
+      <nav role="navigation" aria-label="Main navigation">
+        <a
+          class="home"
+          aria-label="Homepage"
+          href="index.html"
+          aria-current="page"
         >
+          <span class="logo" aria-hidden="true">X</span>
+          <span>HOME</span>
+        </a>
         <div class="nav-btn">
           <a href="about.html" class="nav-link">About</a>
           <a href="blog.html" id="blog-btn" class="nav-link">Blog</a>
         </div>
       </nav>
+
       <header>
-        <h1>EX<span class="logo">X</span>EED</h1>
+        <h1>EX<span class="logo" aria-hidden="true">X</span>EED</h1>
         <h2>"I can do all things through HIM"</h2>
       </header>
-      <!-- Post list moved to blog.html -->
     </main>
-    <footer>
-      <p>Powered by Cloudflare - made with 🖤</p>
+
+    <footer role="contentinfo">
+      <p>Powered by Cloudflare - made with <span aria-label="love">🖤</span></p>
     </footer>
   </body>
 </html>

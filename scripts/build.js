@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * scripts/build.js — Minimal static build script
- * Copies necessary files into `dist/` so Wranger or Cloudflare Pages can deploy them
+ * Copies necessary files into `dist/` so Wrangler or Cloudflare Pages can deploy them
  */
 const fs = require("fs");
 const path = require("path");
@@ -39,30 +39,49 @@ if (fs.existsSync(distRoot)) {
 }
 ensureDir(distRoot);
 
-// files to copy
+// Files to copy - UPDATED to include new files
 const files = [
   "index.html",
   "blog.html",
   "post.html",
+  "about.html",
   "styles.css",
   "script.js",
   "utils.js",
   "post.js",
+  "theme.js", // NEW: Dark mode toggle
+  "_headers", // NEW: Security headers
+  "sitemap.xml", // NEW: SEO sitemap
+  "robots.txt", // NEW: Search engine instructions
   "manage.html",
   "manage.js",
   "README.md",
   "package.json",
   ".gitignore",
 ];
+
 files.forEach((f) => {
   const s = path.join(srcRoot, f);
-  if (fs.existsSync(s)) copyFile(s, path.join(distRoot, f));
+  if (fs.existsSync(s)) {
+    copyFile(s, path.join(distRoot, f));
+    console.log(`✓ Copied ${f}`);
+  } else {
+    console.log(`⚠ Skipped ${f} (not found)`);
+  }
 });
 
-// copy posts directory
+// Copy posts directory
 const postsSrc = path.join(srcRoot, "posts");
 if (fs.existsSync(postsSrc)) {
   copyRecursive(postsSrc, path.join(distRoot, "posts"));
+  console.log("✓ Copied posts directory");
 }
 
-console.log("Built static assets to", distRoot);
+// Copy assets directory (if exists)
+const assetsSrc = path.join(srcRoot, "assets");
+if (fs.existsSync(assetsSrc)) {
+  copyRecursive(assetsSrc, path.join(distRoot, "assets"));
+  console.log("✓ Copied assets directory");
+}
+
+console.log("\n✅ Built static assets to", distRoot);
